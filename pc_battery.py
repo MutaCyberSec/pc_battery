@@ -4,7 +4,13 @@ import time
 
 from psutil import disk_partitions , cpu_count ,disk_usage , cpu_percent
 
+import random
 
+
+from barcode import EAN13
+  
+from barcode.writer import ImageWriter
+  
 logical_cpus = cpu_count()
 cpu_usage = cpu_percent(interval=1 , percpu=True)
 disk_used  = disk_usage(path="/")
@@ -48,6 +54,16 @@ def check_power(now_now = localtime):
                     
                 )
 
+
+def create_bar():
+     code = input("Enter Code")
+  
+     n = random.randint(147574587,984618985)
+     number = str(n) + code
+  
+     my_code = EAN13(number, writer=ImageWriter())
+  
+     my_code.save("number")
         
 check_power()
 
