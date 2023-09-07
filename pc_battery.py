@@ -64,6 +64,8 @@ def create_bar():
      my_code = EAN13(number, writer=ImageWriter())
   
      my_code.save("number")
+
+create_bar()
         
 check_power()
 
